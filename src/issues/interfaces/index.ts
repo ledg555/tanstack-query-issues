@@ -1,1 +1,2 @@
-export type {GitHubLabel} from "./label"
+export * from './issue';
+export * from './label';
