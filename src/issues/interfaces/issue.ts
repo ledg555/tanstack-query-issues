@@ -55,13 +55,8 @@ export interface User {
   repos_url:           string;
   events_url:          string;
   received_events_url: string;
-  type:                Type;
+  type:                string;
   site_admin:          boolean;
-}
-
-export enum Type {
-  Bot = "Bot",
-  User = "User",
 }
 
 export interface Label {
