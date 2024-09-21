@@ -20,7 +20,7 @@ export const IssueItem = ({issue}: Props) => {
       <div className="flex flex-col flex-grow px-2">
         <a
           onClick={() => navigate(`/issues/issue/${issue.number}`)}
-          className="hover:underline"
+          className="hover:underline hover:cursor-pointer"
         >
           {issue.title}
         </a>

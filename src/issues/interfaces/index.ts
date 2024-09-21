@@ -1,2 +1,3 @@
-export * from './issue';
-export * from './label';
+export * from "./comment";
+export * from "./issue";
+export * from "./label";
