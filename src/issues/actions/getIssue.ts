@@ -1,4 +1,3 @@
-import { sleep } from "../../helpers";
 import { githubApi } from "../../api/github.api";
 import {GithubIssue} from "../interfaces"
 
