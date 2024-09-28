@@ -13,7 +13,7 @@ export interface GithubIssueComment {
   performed_via_github_app: null;
 }
 
-export interface Reactions {
+interface Reactions {
   url:         string;
   total_count: number;
   "+1":        number;
@@ -26,7 +26,7 @@ export interface Reactions {
   eyes:        number;
 }
 
-export interface User {
+interface User {
   login:               string;
   id:                  number;
   node_id:             string;
