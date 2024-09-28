@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { GithubIssue } from "../interfaces";
 import { useQueryClient } from "@tanstack/react-query";
 import { getIssue, getComments } from "../actions";
+import { timeSince } from "../../helpers";
 
 interface Props {
   issue: GithubIssue;
@@ -47,10 +48,16 @@ export const IssueItem = ({ issue }: Props) => {
         >
           {issue.title}
         </a>
-        <span className="text-gray-500">
-          #{issue.number} opened 2 days ago by{" "}
+        <span className="text-gray-500 mb-2">
+          #{issue.number} opened {timeSince(issue.created_at)} by{" "}
           <span className="font-bold">{issue.user.login}</span>
         </span>
+        <div className="flex flex-wrap">
+          {issue.labels.map(label => (
+            <span key={label.id} className="px-1.5 py-1 mr-2 text-xs text-white rounded-md"
+            style={{border: `1px solid #${label.color}`}}>{label.name}</span>
+          ))}
+        </div>
       </div>
 
       <img

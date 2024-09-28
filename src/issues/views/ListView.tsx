@@ -6,8 +6,16 @@ import {State} from "../interfaces";
 
 export const ListView = () => {
   const [state, setState] = useState<State>(State.All)
-  
-  const { issuesQuery } = useIssues({state});
+  const [filteredLabels, setFilteredLabels] = useState<string[]>([]);
+  const { issuesQuery } = useIssues({state, filteredLabels});
+
+  function handleToggleLabel(labelName: string) {
+    if (filteredLabels.includes(labelName)) {
+      setFilteredLabels(filteredLabels.filter((l) => l !== labelName));
+    } else {
+      setFilteredLabels([...filteredLabels, labelName]);
+    }
+  }
 
   const issues = issuesQuery.data ?? [];
   return (
@@ -19,7 +27,7 @@ export const ListView = () => {
       </div>
 
       <div className="col-span-1 px-2">
-        <LabelPicker />
+        <LabelPicker filteredLabels={filteredLabels} handleToggleLabel={handleToggleLabel}/>
       </div>
     </div>
   );

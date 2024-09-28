@@ -4,7 +4,7 @@ import { getLabels } from "../actions/getLabels";
 export function useLabels() {
   const labelsQuery = useQuery({
     queryKey: ["labels"],
-    queryFn: getLabels,
+    queryFn: () => getLabels(),
     staleTime: 1000 * 10,
     // placeholderData: [
     // {

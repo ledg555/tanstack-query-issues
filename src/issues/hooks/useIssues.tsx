@@ -4,12 +4,13 @@ import { State } from "../interfaces";
 
 interface UseIssuesParams {
   state: State,
+  filteredLabels: string[]
 }
 
-export function useIssues({state}: UseIssuesParams) {
+export function useIssues({state, filteredLabels}: UseIssuesParams) {
   const issuesQuery = useQuery({
-    queryKey: ["issues", {state}],
-    queryFn: () => getIssues(state),
+    queryKey: ["issues", {state, filteredLabels}],
+    queryFn: () => getIssues(state, filteredLabels),
     staleTime: 1000*60,
   });
 
