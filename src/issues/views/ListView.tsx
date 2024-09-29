@@ -3,11 +3,13 @@ import { IssueList } from '../components/IssueList';
 import { LabelPicker } from '../components/LabelPicker';
 import { useIssues } from '../hooks/useIssues';
 import {State} from "../interfaces";
+import { useLabels } from '../hooks/useLabels';
 
 export const ListView = () => {
-  const [state, setState] = useState<State>(State.All)
+  const { labelsQuery } = useLabels();
   const [filteredLabels, setFilteredLabels] = useState<string[]>([]);
-  const { issuesQuery } = useIssues({state, filteredLabels});
+  const [state, setState] = useState<State>(State.All)
+  const { issuesQuery } = useIssues({labels: labelsQuery.data ?? [], state, filteredLabels});
 
   function handleToggleLabel(labelName: string) {
     if (filteredLabels.includes(labelName)) {
@@ -27,7 +29,7 @@ export const ListView = () => {
       </div>
 
       <div className="col-span-1 px-2">
-        <LabelPicker filteredLabels={filteredLabels} handleToggleLabel={handleToggleLabel}/>
+        <LabelPicker labelsQuery={labelsQuery} filteredLabels={filteredLabels} handleToggleLabel={handleToggleLabel}/>
       </div>
     </div>
   );

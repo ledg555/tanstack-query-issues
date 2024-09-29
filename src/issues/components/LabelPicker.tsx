@@ -1,12 +1,13 @@
-import { useLabels } from "../hooks/useLabels";
+import { UseQueryResult } from "@tanstack/react-query";
+import { GitHubLabel } from "../interfaces";
 
 interface LabelPickerProps {
-  filteredLabels: string[],
-  handleToggleLabel: (label: string) => void,
+  labelsQuery: UseQueryResult<GitHubLabel[], Error>;
+  filteredLabels: string[];
+  handleToggleLabel: (label: string) => void;
 }
 
-export const LabelPicker = ({filteredLabels, handleToggleLabel}: LabelPickerProps) => {
-  const {labelsQuery} = useLabels();
+export const LabelPicker = ({labelsQuery, filteredLabels, handleToggleLabel}: LabelPickerProps) => {
 
   if (labelsQuery.isLoading) return(
     <div>Loading...</div>
