@@ -1,7 +1,7 @@
 # Issue Tracker for the React's GitHub Repo
 
 An app to track React's GitHub issues.
-<p align="center"><img src="./public/Issue Tracker.png" width="300"></p>
+<p align="center"><img src="./public/Issue Tracker.png" width="900"></p>
 
 ## Features
 🟢 Filter issues by label(s) <br/>
